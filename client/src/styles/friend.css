@@ -1,0 +1,13 @@
+.Friend-Name {
+
+}
+
+.Friend-Button {
+    background-color: #e67315;
+    padding: 5px;
+    margin: 1%;
+    color: white;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 2px solid black;
+}

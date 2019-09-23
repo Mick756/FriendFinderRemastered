@@ -1,0 +1,89 @@
+body {
+    font-family: 'Red Hat Display', sans-serif;
+    text-align: center;
+    height: 100%;
+}
+
+.App-logo {
+
+}
+
+.App-header {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    margin: 0 auto;
+    color: white;
+    font-size: 50px;
+    background-color: #e67315;
+    border-bottom: 2px solid black;
+}
+
+.App-header-2 {
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+    margin: 0 auto;
+    color: white;
+    font-size: 45px;
+    background-color: #e67315;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.Home-Page-Button {
+    background-color: #e67315;
+    width: 23%;
+    padding: 10px;
+    margin: 1%;
+    color: white;
+    font-size: 25px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.Search-Amount-Button {
+    background-color: gray;
+    width: calc(2% + 13px);
+    padding: 1px;
+    margin: 1%;
+    color: white;
+    font-size: 25px;
+    border-radius: 10px;
+    border: 2px solid black;
+    text-align: center;
+}
+
+.Query-Amount {
+    font-size: 40px;
+}
+
+.Button-Container {
+    width: 100%;
+    text-align: center;
+    margin: 30px auto;
+}
+
+.Shadow {
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+.App-link {
+
+}
+
+.Click-Button {
+    width: 100%;
+    height: calc(50px + 2vh)
+}
+
+.Friend-Container {
+    float: left;
+    margin: 20px 5px 5px 19px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    width: calc(150px + 13.5%);
+}
