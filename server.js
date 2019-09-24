@@ -1,7 +1,7 @@
 // Libraries
 const express  = require('express');
 const path = require("path");
-
+const Mongo = require("./util/API");
 
 // Variables
 const app = express();
@@ -17,6 +17,7 @@ app.get("*", (req, res) => {
     res.sendFile("index.html");
 });
 
+Mongo.addUser("Mick Arias", "mick756@gmail.com", "480-888-6952", "1234");
 
 // Listen
 app.listen(PORT, () => {
