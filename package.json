@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Mick756/FriendFinderRemastered#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.7.1"
+    "mongoose": "^5.7.1",
+    "simple-crypto-js": "^2.2.0"
   }
 }

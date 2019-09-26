@@ -1,27 +1,40 @@
 const mongoose = require('mongoose');
+const SimpleCrypto = require("simple-crypto-js").default;
+const mongo = require('./mongo');
 
-if (process.env.MONGODB_URI) {
-    mongoose.connect(process.env.MONGODB_URI);
-} else {
-    mongoose.connect('mongodb://localhost:27017');
-}
+const Schema = mongoose.Schema;
+const PORT = 27017;
 
-
-const User = {name: String, email: String, phone_number: String, password: String};
-const UserModel = mongoose.model('User', User);
+const _secretKey = SimpleCrypto.generateRandom(256);
+const simpleCrypto = new SimpleCrypto(_secretKey);
 
 module.exports =  {
 
-    addUser(name, email, phone_number, password) {
+    async addUser(name, email, phone_number, password) {
 
-        const user = new UserModel({name: name, email: email, phone_number: phone_number, password: password});
+            const new_user = new mongo.User({
+                name: name,
+                email: email,
+                phone_number: phone_number,
+                password: mongo.encrypt(password)
+            });
 
-        user.save().then(() => {
-            console.log("Saved");
-        });
+            return await mongo.save(new_user);
+    },
 
+    async deleteUser(email) {
 
+        return await mongo.User.find({
+            email: email,
+        }, (err, results) => {
+            if (!err) {
+                results.forEach(result => {
+                    result.remove();
+                });
+                console.log("Deleted.");
+            }
+        })
 
-    }
+    },
 
 };
