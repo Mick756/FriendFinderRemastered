@@ -27,7 +27,7 @@ app.get("*", (req, res) => {
 
 // DB Connect
 mongoose.connection.on('open', async () => {
-    let loggedIn = await Auth.login("1", "123");
+    let loggedIn = await Auth.checkEmailAndPassword("1", "123");
     console.log(loggedIn);
 });
 

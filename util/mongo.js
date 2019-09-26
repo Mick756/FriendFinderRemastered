@@ -15,9 +15,9 @@ function connect() {
     } else {
 
         mongoose.connect('mongodb://localhost:27017/friend_finder', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
-            console.log("Connected to the local MongoDB on port " + PORT);
+            console.log("Connected to the local MongoDB on port " + PORT + ". mongodb://localhost:27017/friend_finder");
         }).catch((error) => {
-            console.log("Failed to connect to the local MongoDB on port " + PORT);
+            console.log("Failed to connect to the local MongoDB on port " + PORT + ". mongodb://localhost:27017/friend_finder");
         });
     }
 }
@@ -34,9 +34,9 @@ const User = mongoose.model('User', UserSchema);
 
 module.exports = {
     User: User,
-    save: (user) => {
-        user.save((err, user) => {
-            console.log("Saved: " + user.name);
+    save: async (user) => {
+        await user.save((err, user) => {
+            return user;
         });
     },
     connect: () => connect(),

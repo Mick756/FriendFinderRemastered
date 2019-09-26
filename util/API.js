@@ -30,35 +30,56 @@ async function userExists(email) {
         });
 }
 
+async function checkEmailAndPassword(email, password)  {
+
+    let exists = await userExists(email);
+
+    if (exists) {
+
+        return await mongo.User.findOne({email: email})
+            .then(user => {
+
+                let decrypt_password = decrypt(user.password);
+
+                if (password === decrypt_password) {
+
+                    return true;
+                }
+
+                return false;
+            }).catch(err => {});
+    } else {
+        return false;
+    }
+}
+
+async function findUser(email)  {
+
+    let exists = await userExists(email);
+
+    if (exists) {
+
+        return await mongo.User.findOne({email: email})
+            .then(user => {
+
+
+
+            }).catch(err => {});
+    } else {
+        return false;
+    }
+}
+
 module.exports =  {
 
     userExists: async (email) => await userExists(email),
 
-    login: async (email, password) => {
+    checkEmailAndPassword: async (email, password) => await checkEmailAndPassword(email, password),
 
-        let exists = await userExists(email);
-
-        if (exists) {
-            console.log("lol1");
-            return await mongo.User.findOne({email: email})
-                .then(user => {
-                    let decrypt_password = decrypt(user.password);
-                    console.log(password, decrypt_password);
-                    if (password === decrypt_password) {
-                        return true;
-                    }
-                    return false;
-                }).catch(err => {
-                console.log(err);
-            });
-        } else {
-            return false;
-        }
-
-    },
+    findUser: async (email) => await findUser(email),
 
 
-    async addUser(name, email, phone_number, password) {
+    addUser: async (name, email, phone_number, password) => {
 
         let exists = await userExists(email);
 
@@ -68,7 +89,8 @@ module.exports =  {
                 name: name,
                 email: email,
                 phone_number: phone_number,
-                password: encrypt(password)
+                password: encrypt(password),
+                friends: []
             });
 
             return await mongo.save(new_user);
@@ -77,7 +99,7 @@ module.exports =  {
         }
     },
 
-    async deleteUser(email) {
+    deleteUser: async (email) => {
 
         await mongo.User.findOne({
             email: email,
@@ -91,6 +113,20 @@ module.exports =  {
                 console.log("Deleted.");
             }
         })
+    },
+
+    getFriends: async (email, password) => {
+
+        let check = await checkEmailAndPassword(email, password);
+
+        if (check) {
+
+            // search emails in user friends array and send back array of user objects with only name.
+
+        } else {
+            return [];
+        }
+
     }
 
 };
