@@ -24,6 +24,30 @@ module.exports = function (app) {
         }
     });
 
+    app.post("/api/login", async (req, res) => {
+        let details = req.body;
+
+        let email = details.email;
+        let password = details.password;
+
+        if (email && password) {
+
+            let check = await Auth.checkEmailAndPassword(email, password);
+
+            if (check === true) {
+
+                await res.json({ correct: true });
+
+            } else {
+                await res.json({ correct: false });
+            }
+
+        } else {
+            await res.json(false);
+        }
+
+    });
+
     app.post("/api/get_friends", async (req, res) => {
         let user = req.body;
 

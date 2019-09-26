@@ -12,7 +12,7 @@
 .Signup-Form-Input {
     font-size: 30px;
     margin: 10px;
-    width: 70%;
+    width: 60%;
     padding: 5px;
     border-radius: 10px;
     border: 2px solid black;
@@ -27,4 +27,10 @@
     margin: 0 30px 10%;
     border-radius: 10px;
     border: 2px solid black;
+}
+
+.Login-Error {
+    padding: 20px;
+    font-size: 25px;
+    margin: 10px auto;
 }

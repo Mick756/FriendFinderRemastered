@@ -87,3 +87,21 @@ body {
     border: 2px solid black;
     width: calc(150px + 13.5%);
 }
+
+.Account {
+    font-size: 15px;
+}
+
+.Logout-Button {
+    background-color: #e67315;
+    color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    margin: 4px;
+    padding: 5px;
+}
+
+.Underline {
+    text-decoration: underline;
+}

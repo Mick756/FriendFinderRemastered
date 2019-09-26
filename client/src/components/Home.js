@@ -33,7 +33,12 @@ function Home() {
 
     // States
     const [number, setNumber] = useState(5);
+    const [account, setAccount] = useState(localStorage.getItem("user") || null);
 
+    function logout() {
+        localStorage.removeItem("user");
+        setAccount(null);
+    }
 
     useEffect(() => {
         console.log("Mounted.");
@@ -41,7 +46,13 @@ function Home() {
 
     return (
         <div className="App">
-            <div className="Shadow App-header">Friend Finder</div>
+            <div className="Shadow App-header">
+                Friend Finder
+                <div className="Account">
+                    {account ? (<div>Logged in as:  <span className="Underline">{account}</span>
+                        <Button className="Logout-Button" onClick={() => {logout()}}>Logout</Button></div>) : ""}
+                </div>
+            </div>
             <div className="Button-Container">
                     <Link to="/signup">
                         <Button className="Shadow Home-Page-Button" id="signUp">Sign Up</Button>

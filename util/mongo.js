@@ -3,18 +3,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const PORT = 27017;
 
-function connect() {
+async function connect() {
 // Connect to MongoDB
     if (process.env.MONGODB_URI) {
 
-        mongoose.connect(process.env.MONGODB_URI).then(() => {
+        await mongoose.connect(process.env.MONGODB_URI).then(() => {
 
         }).catch((error) => {
 
         });
     } else {
 
-        mongoose.connect('mongodb://localhost:27017/friend_finder', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
+        await mongoose.connect('mongodb://localhost:27017/friend_finder', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
             console.log("Connected to the local MongoDB on port " + PORT + ". mongodb://localhost:27017/friend_finder");
         }).catch((error) => {
             console.log("Failed to connect to the local MongoDB on port " + PORT + ". mongodb://localhost:27017/friend_finder");
@@ -39,5 +39,5 @@ module.exports = {
             return user;
         });
     },
-    connect: () => connect(),
+    connect: async () => await connect(),
 };

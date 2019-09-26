@@ -19,12 +19,11 @@ function decrypt(encrypted) {
 async function userExists(email) {
 
     return await mongo.User.findOne({email: email})
+
         .then(user => {
-            if (user.email) {
-                return true;
-            } else {
-                return false;
-            }
+
+            return (!!user.email);
+
         }).catch(err => {
             return false;
         });
@@ -37,17 +36,18 @@ async function checkEmailAndPassword(email, password)  {
     if (exists) {
 
         return await mongo.User.findOne({email: email})
+
             .then(user => {
 
                 let decrypt_password = decrypt(user.password);
 
-                if (password === decrypt_password) {
+                return (password === decrypt_password);
 
-                    return true;
-                }
 
+            }).catch(err => {
                 return false;
-            }).catch(err => {});
+            });
+
     } else {
         return false;
     }
@@ -90,7 +90,8 @@ module.exports =  {
                 email: email,
                 phone_number: phone_number,
                 password: encrypt(password),
-                friends: []
+                friends: [],
+                friend_requests: []
             });
 
             return await mongo.save(new_user);

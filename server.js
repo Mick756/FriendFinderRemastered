@@ -5,8 +5,6 @@ const Mongo = require('./util/mongo');
 const mongoose = require('mongoose');
 const Auth = require("./util/API");
 
-Mongo.connect();
-
 // Variables
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -26,8 +24,10 @@ app.get("*", (req, res) => {
 });
 
 // DB Connect
+Mongo.connect();
 mongoose.connection.on('open', async () => {
-    let loggedIn = await Auth.checkEmailAndPassword("1", "123");
+    let loggedIn = await Auth.checkEmailAndPassword("mick756@gmail.com", "123");
+
     console.log(loggedIn);
 });
 
