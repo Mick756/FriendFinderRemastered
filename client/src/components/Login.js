@@ -4,11 +4,11 @@ import '../styles/home.css';
 import '../styles/signup.css';
 import {Link} from "react-router-dom";
 
-function SignUp() {
+function Login() {
 
     const [error, displayError] = useState(false);
 
-    function submitUserSignUp(name, email, phone_number, password) {
+    function submitUserLogin(name, email, phone_number, password) {
 
     }
 
@@ -19,8 +19,8 @@ function SignUp() {
                 <Link to="/">
                     <Button className="Shadow Home-Page-Button" id="signUp">Home</Button>
                 </Link>
-                <Link to="/login">
-                    <Button className="Shadow Home-Page-Button" id="login">Login</Button>
+                <Link to="/signup">
+                    <Button className="Shadow Home-Page-Button" id="login">Sign Up</Button>
                 </Link>
                 <Link to="/search">
                     <Button className="Shadow Home-Page-Button" id="Search">Search</Button>
@@ -30,25 +30,17 @@ function SignUp() {
                 </Link>
             </div>
             <div className="Shadow App-header-2">
-                Sign Up Below
+                Login Below
             </div>
 
             <Form>
                 <FormGroup className="Shadow Signup-Form-Container">
-                    <Label for="name_input">Name</Label>
-                    <Input className="Signup-Form-Input" type="text" name="name" id="signup_name_input" />
-                </FormGroup>
-                <FormGroup className="Shadow Signup-Form-Container">
                     <Label for="email_input">Email</Label>
-                    <Input className="Signup-Form-Input" type="email" name="email" id="signup_email_input" />
-                </FormGroup>
-                <FormGroup className="Shadow Signup-Form-Container">
-                    <Label for="phone_number_input">Phone Number</Label>
-                    <Input className="Signup-Form-Input" type="text" name="phone_number" id="signup_phone_number_input" />
+                    <Input className="Signup-Form-Input" type="email" name="email" id="login_email_input" />
                 </FormGroup>
                 <FormGroup className="Shadow Signup-Form-Container">
                     <Label for="examplePassword">Password</Label>
-                    <Input className="Signup-Form-Input" type="password" name="password" id="signup_password_input" />
+                    <Input className="Signup-Form-Input" type="password" name="password" id="login_password_input" />
                 </FormGroup>
                 <Button className="Shadow Signup-Form-Button">Submit</Button>
             </Form>
@@ -57,4 +49,4 @@ function SignUp() {
     );
 }
 
-export default SignUp;
+export default Login;

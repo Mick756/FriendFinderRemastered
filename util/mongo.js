@@ -1,10 +1,5 @@
 const mongoose = require('mongoose');
 
-const SimpleCrypto = require("simple-crypto-js").default;
-
-const _secretKey = SimpleCrypto.generateRandom(256);
-const simpleCrypto = new SimpleCrypto(_secretKey);
-
 const Schema = mongoose.Schema;
 const PORT = 27017;
 
@@ -39,12 +34,6 @@ const User = mongoose.model('User', UserSchema);
 
 module.exports = {
     User: User,
-    encrypt: (plain) => {
-        return simpleCrypto.encrypt(plain);
-    },
-    decrypt: (encrypted) => {
-        return simpleCrypto.decrypt(encrypted);
-    },
     save: (user) => {
         user.save((err, user) => {
             console.log("Saved: " + user.name);

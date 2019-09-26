@@ -1,3 +1,30 @@
 .Signup-Form-Container {
+    color: white;
+    font-size: 30px;
     padding: 20px;
+    background-color: #e67315;
+    width: 50%;
+    margin: 30px 25%;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.Signup-Form-Input {
+    font-size: 30px;
+    margin: 10px;
+    width: 70%;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.Signup-Form-Button {
+    color: white;
+    background-color: #e67315;
+    padding: 20px;
+    font-size: 30px;
+    width: 80%;
+    margin: 0 30px 10%;
+    border-radius: 10px;
+    border: 2px solid black;
 }

@@ -1,5 +1,11 @@
 .Friend-Name {
+    margin: 0;
+    font-size: 30px;
+}
 
+.Friend-Age {
+    margin: 2px;
+    font-size: 20px;
 }
 
 .Friend-Button {
