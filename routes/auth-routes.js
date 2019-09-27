@@ -14,14 +14,24 @@ module.exports = function (app) {
             let user = await Auth.addUser(user_details.name, user_details.email, user_details.phone_number, user_details.password);
 
             if (user === false) {
-                return await res.json(false);
+                return res.json(false);
             }
 
-            return await res.json(user);
+            return res.json(user);
 
         } else {
-            return await res.json(false);
+            return res.json(false);
         }
+    });
+
+    app.post("/api/user_exists", async (req, res) => {
+        let details = req.body;
+
+        let email = details.email;
+        let exists = await Auth.userExists(email);
+
+        return res.json(exists);
+
     });
 
     app.post("/api/login", async (req, res) => {
@@ -36,22 +46,24 @@ module.exports = function (app) {
 
             if (check === true) {
 
-                await res.json({ correct: true });
+                return res.json({ correct: true });
 
             } else {
-                await res.json({ correct: false });
+                return res.json({ correct: false });
             }
 
         } else {
-            await res.json(false);
+            return res.json(false);
         }
 
     });
 
     app.post("/api/get_friends", async (req, res) => {
-        let user = req.body;
+        let details = req.body;
 
+        let friends = await Auth.getFriends(details.email, details.password);
 
+        return res.json(friends);
 
     });
 

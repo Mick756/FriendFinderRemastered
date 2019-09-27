@@ -62,7 +62,7 @@ async function findUser(email)  {
         return await mongo.User.findOne({email: email})
             .then(user => {
 
-
+                return user;
 
             }).catch(err => {});
     } else {
@@ -77,7 +77,6 @@ module.exports =  {
     checkEmailAndPassword: async (email, password) => await checkEmailAndPassword(email, password),
 
     findUser: async (email) => await findUser(email),
-
 
     addUser: async (name, email, phone_number, password) => {
 
@@ -111,7 +110,6 @@ module.exports =  {
                 results.forEach(result => {
                     result.remove();
                 });
-                console.log("Deleted.");
             }
         })
     },
@@ -122,7 +120,15 @@ module.exports =  {
 
         if (check) {
 
-            // search emails in user friends array and send back array of user objects with only name.
+            let user = await findUser(email);
+            let friends = [];
+
+            for (const friend_email of user.friends) {
+                  let friend = await findUser(friend_email);
+                  friends.push(friend);
+            }
+
+            return friends;
 
         } else {
             return [];

@@ -1,8 +1,11 @@
 import React, {useState, useRef} from 'react';
 import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
+
 import '../styles/home.css';
 import '../styles/signup.css';
-import {Link} from "react-router-dom";
+
 
 function SignUp() {
 
@@ -12,19 +15,24 @@ function SignUp() {
     const phone_number_ref = useRef(null);
     const password_ref = useRef(null);
 
-    function submitUserSignUp() {
+    async function submitUserSignUp() {
 
         let name = name_ref.current.value;
         let email = email_ref.current.value;
         let phone_number = phone_number_ref.current.value;
         let password = password_ref.current.value;
 
-        // Check if user already exists
+        let response = await axios.post("/api/user_exist", { email: email});
 
-        // If not add new user
+        if (!response.data.exists) {
 
-        // "login" then redirect
+            let added = await axios.post("/api/add_user")
 
+        } else {
+
+            displayError(true);
+
+        }
 
     }
 
@@ -50,6 +58,7 @@ function SignUp() {
             </div>
 
             <Form>
+                {error ? <div className="Login-Error" >A user with those credentials already exist! <Link to="/">Click here to login.</Link>  </div> : <div> </div>}
                 <FormGroup className="Shadow Signup-Form-Container">
                     <Label for="name_input">Name</Label>
                     <Input className="Signup-Form-Input" type="text" name="name" id="signup_name_input" innerRef={name_ref} />

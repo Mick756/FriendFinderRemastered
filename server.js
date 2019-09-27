@@ -25,11 +25,6 @@ app.get("*", (req, res) => {
 
 // DB Connect
 Mongo.connect();
-mongoose.connection.on('open', async () => {
-    let loggedIn = await Auth.checkEmailAndPassword("mick756@gmail.com", "123");
-
-    console.log(loggedIn);
-});
 
 // Listen
 app.listen(PORT, () => {
