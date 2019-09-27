@@ -90,10 +90,13 @@ module.exports =  {
                 phone_number: phone_number,
                 password: encrypt(password),
                 friends: [],
-                friend_requests: []
+                friend_requests: [],
+                taken_survey: false
             });
 
-            return await mongo.save(new_user);
+            await mongo.save(new_user);
+
+            return true;
         } else {
             return false;
         }

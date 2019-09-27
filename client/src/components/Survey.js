@@ -1,18 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button} from 'reactstrap';
 import {Link} from "react-router-dom";
 
 import '../styles/home.css';
+import '../styles/survey.css';
+
 import Account from "./Account";
 
+function Survey() {
 
-function Friends() {
+    const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("user"));
 
     return (
-        <div className="Friends-Page">
+        <div className="App">
             <div className="Shadow App-header">
                 Friend Finder
-                <Account/>
+                <Account />
             </div>
             <div className="Button-Container">
                 <Link to="/">
@@ -28,12 +31,18 @@ function Friends() {
                     <Button className="Shadow Home-Page-Button" id="Friends">Search</Button>
                 </Link>
             </div>
+
             <div className="Shadow App-header-2">
-                Friends
+                Survey
             </div>
 
-        </div>
-    );
+            {loggedIn ?
+                <div> </div>
+            :
+                <div className="Friend-Finder-App-Description">You need to be logged in to view and take the survey!</div>}
+
+
+        </div>);
 }
 
-export default Friends;
+export default Survey;

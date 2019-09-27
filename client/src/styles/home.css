@@ -105,3 +105,14 @@ body {
 .Underline {
     text-decoration: underline;
 }
+
+.Friend-Finder-App-Description {
+    font-size: 25px;
+    margin: 30px 0 0 0;
+}
+
+.App-Footer {
+    color: white;
+    font-size: 15px;
+    background-color: #e67315;
+}

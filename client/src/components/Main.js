@@ -7,6 +7,7 @@ import SignUp from './SignUp';
 import Login from "./Login";
 import Search from "./Search";
 import Friends from "./Friends";
+import Survey from "./Survey";
 
 function Main() {
 
@@ -19,6 +20,7 @@ function Main() {
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/search" component={Search}/>
                     <Route exact path="/friends" component={Friends}/>
+                    <Route exact path="/survey" component={Survey}/>
                 </Switch>
             </div>
         </Router>

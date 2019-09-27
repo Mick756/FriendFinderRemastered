@@ -14,10 +14,10 @@ module.exports = function (app) {
             let user = await Auth.addUser(user_details.name, user_details.email, user_details.phone_number, user_details.password);
 
             if (user === false) {
-                return res.json(false);
+                await res.json(false);
             }
 
-            return res.json(user);
+            await res.json(true);
 
         } else {
             return res.json(false);

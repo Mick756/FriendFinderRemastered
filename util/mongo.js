@@ -27,7 +27,10 @@ const UserSchema = new Schema({
     name: String,
     email: String,
     phone_number: String,
-    password: String
+    password: String,
+    friends: Array,
+    friend_requests: Array,
+    taken_survey: Boolean
 });
 
 const User = mongoose.model('User', UserSchema);

@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import '../styles/home.css';
 import '../styles/signup.css';
+import Account from "./Account";
 
 function Login() {
 
@@ -39,7 +40,10 @@ function Login() {
 
     return (
         <div className="Signup-Page">
-            <div className="Shadow App-header">Friend Finder</div>
+            <div className="Shadow App-header">
+                Friend Finder
+                <Account/>
+            </div>
             <div className="Button-Container">
                 <Link to="/">
                     <Button className="Shadow Home-Page-Button" id="signUp">Home</Button>
