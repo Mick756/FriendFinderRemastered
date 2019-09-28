@@ -10,6 +10,7 @@ import Account from "./Account";
 function Survey() {
 
     const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("user"));
+    const [survey, setSurvey] = useState(null);
 
     return (
         <div className="App">
@@ -39,8 +40,8 @@ function Survey() {
             {loggedIn ?
                 <div> </div>
             :
-                <div className="Friend-Finder-App-Description">You need to be logged in to view and take the survey!</div>}
-
+                <div className="Friend-Finder-App-Description">You need to be logged in to view and take the survey!</div>
+            }
 
         </div>);
 }

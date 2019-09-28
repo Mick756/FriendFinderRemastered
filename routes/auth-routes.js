@@ -2,7 +2,37 @@ let Auth = require("../util/API");
 
 module.exports = function (app) {
 
+    app.get("/api/get_survey/:email", async (req, res) => {
+        let email = req.params.email;
 
+        let exists = await Auth.userExists(email);
+
+        if (exists) {
+
+            let user = await Auth.findUser(email);
+
+            if (user !== false) {
+
+                return user.survey;
+
+            } else {
+                await res.json(false)
+            }
+
+        } else {
+            await res.json(false);
+        }
+
+    });
+
+    app.get("/api/user_exists/:email", async (req, res) => {
+        let email = req.params.email;
+
+        let exists = await Auth.userExists(email);
+
+        return res.json(exists);
+
+    });
 
     app.post("/api/add_user", async (req, res) => {
         let user_details = req.body;
@@ -11,26 +41,17 @@ module.exports = function (app) {
 
         if (!exists) {
 
-            let user = await Auth.addUser(user_details.name, user_details.email, user_details.phone_number, user_details.password);
+            let added = await Auth.addUser(user_details.name, user_details.email, user_details.phone_number, user_details.password);
 
-            if (user === false) {
+            if (added === false) {
                 await res.json(false);
             }
 
             await res.json(true);
 
         } else {
-            return res.json(false);
+            await res.json(false);
         }
-    });
-
-    app.post("/api/user_exists", async (req, res) => {
-        let details = req.body;
-
-        let email = details.email;
-        let exists = await Auth.userExists(email);
-
-        return res.json(exists);
 
     });
 

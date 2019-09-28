@@ -24,7 +24,7 @@ function SignUp() {
         let phone_number = phone_number_ref.current.value;
         let password = password_ref.current.value;
 
-        let response = await axios.post("/api/user_exists", { email: email});
+        let response = await axios.get("/api/user_exists/" + email);
 
         console.log(response);
 
