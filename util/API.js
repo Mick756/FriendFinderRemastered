@@ -5,7 +5,7 @@ const mongo = require('./mongo');
 const Schema = mongoose.Schema;
 const PORT = 27017;
 
-const simpleCrypto = new SimpleCrypto("651e04175c0bdc7f365c9be0b1ab2400671a4a9696ce9d8f9059930894737377");
+const simpleCrypto = new SimpleCrypto(SimpleCrypto.generateRandom(256));
 
 
 function encrypt(plain)  {
@@ -135,6 +135,29 @@ module.exports =  {
 
         } else {
             return [];
+        }
+
+    },
+
+    addSurvey: async (email, survey) => {
+
+        let exists = await userExists(email);
+
+        if (exists) {
+
+            await mongo.User.updateOne(
+                {email: email},
+                {
+                    $set: {
+                            survey: survey,
+                            taken_survey: true
+                        }
+                });
+
+            return true;
+
+        } else {
+            return false;
         }
 
     }

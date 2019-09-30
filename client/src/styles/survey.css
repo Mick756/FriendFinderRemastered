@@ -1,0 +1,49 @@
+.Survey-Container {
+}
+
+.Survey-Answer-Button-Selected {
+    background-color: dodgerblue;
+    padding: 10px;
+    width: calc(50px + 2%);
+    margin: 0 0 0 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.Survey-Answer-Button {
+    background-color: #e67315;
+    padding: 10px;
+    width: calc(50px + 2%);
+    margin: 0 0 0 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    color: white;
+}
+
+.Survey-Question-Container {
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 90%;
+    margin: 30px 5%;
+    background-color: gray;
+}
+
+.Survey-Question {
+    font-size: 25px;
+}
+
+.Survey-Submit-Button {
+    background-color: #e67315;
+    width: 90%;
+    margin: 30px 5%;
+    padding: 15px;
+    font-size: 25px;
+    color: white;
+}
+
+.Shadow {
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+}

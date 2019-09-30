@@ -26,8 +26,6 @@ function SignUp() {
 
         let response = await axios.get("/api/user_exists/" + email);
 
-        console.log(response);
-
         if (response.data === false) {
 
             let added = await axios.post("/api/add_user", {
@@ -36,8 +34,6 @@ function SignUp() {
                 phone_number: phone_number,
                 password: password
             });
-
-            console.log(added);
 
             if (added.data === true) {
 

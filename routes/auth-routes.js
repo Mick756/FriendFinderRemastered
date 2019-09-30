@@ -79,12 +79,53 @@ module.exports = function (app) {
 
     });
 
+    app.post("/api/add_survey/:email", async (req, res) => {
+        let email = req.params.email;
+        let survey = req.body;
+
+        let added = await Auth.addSurvey(email, survey);
+
+        await res.json(added);
+
+    });
+
     app.post("/api/get_friends", async (req, res) => {
         let details = req.body;
 
         let friends = await Auth.getFriends(details.email, details.password);
 
         return res.json(friends);
+
+    });
+
+    app.get("/api/get_friend/:email", async (req, res) => {
+        let email = req.params.email;
+
+        let exists = await Auth.userExists(email);
+
+        if (exists) {
+
+            let user = await Auth.findUser(email);
+
+            if (user.taken_survey) {
+
+                await res.json({
+                    name: user.name,
+                    email: user.email,
+                    survey: user.survey
+                });
+
+            } else {
+
+                await res.json({
+                    name: user.name,
+                    email: user.email
+                });
+
+            }
+        } else {
+            await res.json(false);
+        }
 
     });
 

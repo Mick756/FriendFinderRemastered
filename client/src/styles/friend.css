@@ -1,19 +1,18 @@
 .Friend-Name {
-    margin: 0;
+    font-size: 45px;
+}
+
+.Friend-Email {
     font-size: 30px;
 }
 
-.Friend-Age {
-    margin: 2px;
-    font-size: 20px;
+.Friend-Survey-Table {
+    font-size: 30px;
+    text-align: center;
+    margin: 0 auto;
 }
 
-.Friend-Button {
-    background-color: #e67315;
-    padding: 5px;
-    margin: 1%;
-    color: white;
-    font-size: 15px;
-    border-radius: 10px;
-    border: 2px solid black;
+.Center {
+    text-align: center;
+    margin-left: 20px;
 }
