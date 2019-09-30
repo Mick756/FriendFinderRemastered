@@ -29,7 +29,7 @@ function Friends() {
                 </Link>
             </div>
             <div className="Shadow App-header-2">
-                Friends
+                Friends (WIP)
             </div>
 
         </div>

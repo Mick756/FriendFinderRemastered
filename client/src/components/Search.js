@@ -52,7 +52,7 @@ function Search() {
                     <Button className="Shadow Home-Page-Button" id="Search">Login</Button>
                 </Link>
                 <Link to="/friends">
-                    <Button className="Shadow Home-Page-Button" id="Friends">Friends</Button>
+                    <Button className="Shadow Home-Page-Button" id="Friends">Friends (WIP)</Button>
                 </Link>
             </div>
             <div className="Shadow App-header-2">
